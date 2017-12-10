@@ -14,15 +14,19 @@ module.exports = function(robot) {
       //console.dir(tokens);
 
       var result = '';
+      var hasShiji = false;
       tokens.forEach(function(token) {
         if (kosoado.indexOf(token.surface_form) >=0){ 
           result = result + " `" + token.surface_form + "` ";
+          hasShiji = true;
         } else {
           result = result + token.surface_form;
         }
         //msg.reply(token.pos + ' ' + token.basic_form);
       });
-      msg.reply(result);
+      if (hasShiji) {
+        msg.reply(result);
+      }
 
       //msg.reply(tokens);
     });
